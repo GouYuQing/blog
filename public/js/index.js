@@ -61,9 +61,9 @@ $(function () {
         $userInfo.find('button').on('click', function () {
             console.log('logout');
             $.ajax({
-            type: 'post',
+            // type: 'post',
                 url: '/api/user/logout',
-                datatType: 'json',
+                // datatType: 'json',
                 success: function (result) {
                     if (!result.code) {
                         //重载页面
