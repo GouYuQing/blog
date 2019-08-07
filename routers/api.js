@@ -58,6 +58,7 @@ router.post('/user/register',function(req,res,next){
      }).then(function(newUserInfo){
         responseData.message ='注册成功';
         res.json(responseData);
+        return ;
      });
   
 })
@@ -96,5 +97,10 @@ router.post('/user/login',function(req,res,next){
         res.json(responseData);
         return ;
     })
+})
+router.get('/user/logout',function(req,res){
+    req.cookies.set('userInfo',null);
+    res.json(responseData);
+    return ;
 })
 module.exports = router;
