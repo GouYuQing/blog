@@ -36,7 +36,7 @@ app.use(function(req,res,next){
             User.findById(req.userInfo._id).then(function(userInfo){
                 if(req.userInfo.username=='admin'){
                     req.userInfo.isAdmin = true;
-                    // console.log(req.userInfo)
+                    console.log(req.userInfo)
                 }else{
                     req.userInfo.isAdmin = Boolean(userInfo.isAdmin);
                 }
