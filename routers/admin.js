@@ -220,7 +220,8 @@ router.get('/content',function(req,res){
         page = Math.min(page, pages);
         page = Math.max(page, 1);
         var skip = (page - 1) * limit;
-    Content.find().sort({_id:-1}).limit(limit).skip(skip).then(function (contents) {
+        //populate('category')引用的内容，在index页面里面就可以直接使用
+    Content.find().sort({_id:-1}).limit(limit).skip(skip).populate('category').then(function (contents) {
             res.render('admin/content_index', {
                 userInfo: req.userInfo,
                 contents: contents,
@@ -270,6 +271,78 @@ router.post('/content/add',function(req,res){
             message:'内容保存成功',
             url:'/admin/content'
         })
+    })
+})
+/*内容修改 */
+router.get('/content/edit',function(req,res){
+    let id = req.query.id||'';
+    var categories=[];
+    Category.find().sort({_id:-1}).then(function(rs){
+        categories = rs;
+        return Content.findOne({
+            _id:id
+        }).then(function(content){
+            if(!content){
+                res.render('admin/error',{
+                    userInfo:req.userInfo,
+                    message:'指定内容不存在'
+                });
+                return Promise.reject();
+            }else{
+                res.render('admin/content_edit',{
+                    userInfo:req.userInfo,
+                    categories:categories,
+                    content:content
+                })
+            }
+        })
+    })
+   
+})
+/*保存修改内容 */
+router.post('/content/edit',function(req,res){
+    var id = req.query.id||'';
+    if(req.body.category == ''){
+        res.render('admin/error',{
+            userInfo:req.userInfo,
+            message:'内容分类不能为空'
+        })
+        return;
+    }
+    if(req.body.title == ''){
+        res.render('admin/error',{
+            userInfo:req.userInfo,
+            message:'内容标题不能为空'
+        })
+        return;
+    }
+    Content.update({
+        _id:id
+    },{
+        category:req.body.category,
+        title:req.body.title,
+        discription:req.body.discription,
+        content:req.body.content
+    }).then(function(rs){
+        res.render('admin/success',{
+            userInfo:req.userInfo,
+            message:'内容保存成功',
+            url:'/admin/content/edit?id='+id
+            // url:'/admin/content'
+        })
+    })
+})
+/*内容删除 */
+router.get('/content/delete',function(req,res){
+    var id = req.query.id||' ';
+    Content.remove({
+        _id:id
+    }).then(function(){
+        res.render('admin/success',{
+            userInfo:userInfo,
+            message:'修改信息成功',
+            url:'/admin/content'
+        });
     })
 })
 module.exports = router;

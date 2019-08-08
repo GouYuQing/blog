@@ -5,9 +5,10 @@ var mongoose = require('mongoose');
 module.exports = new mongoose.Schema({
     //内容关联id
  category:{
+     //类型
      type:mongoose.Schema.Types.ObjectId,
-     //引用
-     ref:'Content'
+     //引用，当我们使用的时候关联上Category
+     ref:'Category'
  },
  //标题
  title:String,
