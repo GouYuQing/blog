@@ -19,9 +19,18 @@
                 <img src="/public/image/logo.png" alt="" />
             </a>
             <nav class="head_nav">
-                    <a href="/">首页</a>                
-                {% for category in categories %}
-                <a href="/">{{category.name}}</a>   
+                {% if category=='' %}
+                <a href="/" class="focus">首页</a>
+                {% else %}
+                <a href="/">首页</a>
+                {% endif %}
+                {% for cate in categories %}
+                {% if category==cate.id %}
+                <a href="/?category={{cate.id}}" class="focus">{{cate.name}}</a>
+                {% else %}
+                <a href="/?category={{cate.id}}">{{cate.name}}</a>
+
+                {% endif %}
                 {% endfor %}
             </nav>
         </div>
@@ -31,66 +40,85 @@
         <h2></h2>
     </div>
     <div class="center">
-        <div class="article_list">
-            <a class="article_item" href="javascript:viod(0);">
-                <h3>js设计模式-(职责链模式)【17】</h3>
-                <div class="article_main">
-                    <p class="article_content ellipsis_4">
-                        不知不觉已经过了几个年轮，昨天还有伙伴说模块化的时候，自己饶有兴致的翻开之前的seajs，requirejs，并且哒哒哒了一堆，然后又莫名失落，估计好多人都早已废弃这些东西，开启了各自mvvm实践之路。哈哈，总是这么多愁善感。
+        <div class="mainLeft">
+                {% for content in contents %}
+                <div class="listBox">
+                    <h1>{{content.title}}</h1>
+                    <p class="colDefault">
+                        作者：<span class="colInfo">{{content.user.username}}</span>
+                        时间：<span class="colInfo">{{content.addTime|date('Y-m-d H:i:s',-8*60)}}</span>
+                        阅读：<span class="colInfo">{{content.views}}</span>
+                        评论：<span class="colInfo">10</span>
                     </p>
+                   <p>{{content.discription}}</p>
+                    <div class="function"><a href="/view?contentid={{content.id}}">阅读全文</a></div>
                 </div>
-                <div class="article_tag">
-                    <span>javascript</span>
-                    <i>2017-03-27</i>
+                {% endfor %}
+                <div class="bottom">
+                    <ul class="clear">
+                        {% if page<=1 %}
+                        <li class="previous"><a href="javascript:;">没有上一页了</a></li>
+                        {% else %}
+                        <a href="/?category={{category}}&page={{page-1}}">上一页</a>
+                        {% endif %}
+                        <li>
+                            <strong>{{page}}/{{pages}}</strong>
+                        </li>
+                        {% if page>=pages %}
+                        <li class="next"><a href="javascript:;">没有下一页了</a></li>
+                        {% else %}
+                        <a href="/?category={{category}}&page={{page+1}}">下一页</a>
+                        {% endif %}
+                    </ul>
                 </div>
-            </a>
-           
         </div>
-        <aside class="user_list">
-            {%if userInfo._id%}
-            <div class="rightBox" id="userInfo">
-                <div class="title"><span>用户信息</span></div>
-                <p><span class="colDark">{{userInfo.username}}</span></p>
-                {% if userInfo.isAdmin %}
-                <p><span class="colDanger">你好，欢迎光临我的管理员！</span></p>
-                <a href="/admin">进入管理界面</a>
-                {% else %}
-                <p><span class="colDanger">你好，欢迎光临我的博客！</span></p>
-                {%endif%}
-                <p><span class="colDark" ><button id="logout">退出</button></span></p>
-            </div>
-            {% else %}
-            <div class="rightBox" id="loginBox" style="display: none">
-                <div class="title"><span>登录</span></div>
-                <div class="line"><span class="colDark">用户名：</span><input type="text" name="username"><em></em></div>
-                <div class="line"><span class="colDark">密码：</span><input type="password" name="password"><em></em></div>
-                <div class="line"><span class="colDark">登录：</span><button>登录</button></div>
-                <p class="textRight">还没注册？<a href="#" class="colMint">马上注册</a></p>
-                <p class="colWarning textCenter"></p>
-            </div>
 
-            <div class="rightBox" id="registerBox">
-                <div class="title"><span>注册</span></div>
-                <div class="line"><span class="colDark">用户名：</span><input type="text" name="username"><em></em></div>
-                <div class="line"><span class="colDark">密码：</span><input type="password" name="password"><em></em></div>
-                <div class="line"><span class="colDark">确认密码：</span><input type="password" name="repassword"><em></em>
-                </div>
-                <div class="line"><span class="colDark"></span><button>注册</button></div>
-                <p class="textRight">已有账号？<a href="#" class="colMint">马上登录</a></p>
-                <p class="colWarning textCenter"></p>
-            </div>
+    </div>
+    <aside class="user_list">
+        {%if userInfo._id%}
+        <div class="rightBox" id="userInfo">
+            <div class="title"><span>用户信息</span></div>
+            <p><span class="colDark">{{userInfo.username}}</span></p>
+            {% if userInfo.isAdmin %}
+            <p><span class="colDanger">你好，欢迎光临我的管理员！</span></p>
+            <a href="/admin">进入管理界面</a>
+            {% else %}
+            <p><span class="colDanger">你好，欢迎光临我的博客！</span></p>
             {%endif%}
-            <div class="friendly_link">
-                <div class="user_tab">
-                    <span class="discuss_title">友情链接</span>
-                </div>
-                <div class="link_item">
-                    <a href="http:www.zhihu.com">知乎</a>
-                </div>
+            <p><span class="colDark"><button id="logout">退出</button></span></p>
+        </div>
+        {% else %}
+        <div class="rightBox" id="loginBox" style="display: none">
+            <div class="title"><span>登录</span></div>
+            <div class="line"><span class="colDark">用户名：</span><input type="text" name="username"><em></em></div>
+            <div class="line"><span class="colDark">密码：</span><input type="password" name="password"><em></em></div>
+            <div class="line"><span class="colDark">登录：</span><button>登录</button></div>
+            <p class="textRight">还没注册？<a href="#" class="colMint">马上注册</a></p>
+            <p class="colWarning textCenter"></p>
+        </div>
+
+        <div class="rightBox" id="registerBox">
+            <div class="title"><span>注册</span></div>
+            <div class="line"><span class="colDark">用户名：</span><input type="text" name="username"><em></em></div>
+            <div class="line"><span class="colDark">密码：</span><input type="password" name="password"><em></em></div>
+            <div class="line"><span class="colDark">确认密码：</span><input type="password" name="repassword"><em></em>
             </div>
-            <p class="user_no">您是本网站的第<i>12</i>位访客祝您生活工作愉快</p>
-            <p class="copy_right">京ICP备17059284号-1</p>
-        </aside>
+            <div class="line"><span class="colDark"></span><button>注册</button></div>
+            <p class="textRight">已有账号？<a href="#" class="colMint">马上登录</a></p>
+            <p class="colWarning textCenter"></p>
+        </div>
+        {%endif%}
+        <div class="friendly_link">
+            <div class="user_tab">
+                <span class="discuss_title">友情链接</span>
+            </div>
+            <div class="link_item">
+                <a href="http:www.zhihu.com">知乎</a>
+            </div>
+        </div>
+        <p class="user_no">您是本网站的第<i>12</i>位访客祝您生活工作愉快</p>
+        <p class="copy_right">京ICP备17059284号-1</p>
+    </aside>
     </div>
 </body>
 
