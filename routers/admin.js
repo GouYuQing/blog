@@ -221,7 +221,7 @@ router.get('/content',function(req,res){
         page = Math.max(page, 1);
         var skip = (page - 1) * limit;
         //populate('category')引用的内容，在index页面里面就可以直接使用
-    Content.find().sort({_id:-1}).limit(limit).skip(skip).populate('category').then(function (contents) {
+    Content.find().sort({_id:-1}).limit(limit).skip(skip).populate(['category','user']).then(function (contents) {
             res.render('admin/content_index', {
                 userInfo: req.userInfo,
                 contents: contents,
@@ -264,7 +264,8 @@ router.post('/content/add',function(req,res){
         category:req.body.category,
         title:req.body.title,
         discription:req.body.discription,
-        content:req.body.content
+        content:req.body.content,
+        user:req.userInfo._id.toString()
     }).save().then(function(rs){
         res.render('admin/success',{
             userInfo:req.userInfo,

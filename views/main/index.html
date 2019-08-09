@@ -9,7 +9,6 @@
     <link rel="stylesheet" href="/public/css/main.css">
     <script src="/public/js/jquery-1.8.3.min.js"></script>
     <script src="/public/js/index.js"></script>
-
     <title>博客首页</title>
 </head>
 
@@ -22,8 +21,7 @@
             <nav class="head_nav">
                     <a href="/">首页</a>                
                 {% for category in categories %}
-                <a href="/">{{category.name}}</a>
-                
+                <a href="/">{{category.name}}</a>   
                 {% endfor %}
             </nav>
         </div>
@@ -46,33 +44,7 @@
                     <i>2017-03-27</i>
                 </div>
             </a>
-            <a class="article_item" href="javascript:viod(0);">
-                <h3>js设计模式-(职责链模式)【17】</h3>
-                <div class="article_main">
-                    <div class="article_img">
-                        <img src="/public/image/test.jpg" alt="">
-                    </div>
-                    <p class="article_content ellipsis_4">
-                        不知不觉已经过了几个年轮，昨天还有伙伴说模块化的时候，自己饶有兴致的翻开之前的seajs，requirejs，并且哒哒哒了一堆，然后又莫名失落，估计好多人都早已废弃这些东西，开启了各自mvvm实践之路。哈哈，总是这么多愁善感。
-                    </p>
-                </div>
-                <div class="article_tag">
-                    <span>javascript</span>
-                    <i>2017-03-27</i>
-                </div>
-            </a>
-            <a class="article_item" href="javascript:viod(0);">
-                <h3>js设计模式-(职责链模式)【17】</h3>
-                <div class="article_main">
-                    <p class="article_content ellipsis_4">
-                        不知不觉已经过了几个年轮，昨天还有伙伴说模块化的时候，自己饶有兴致的翻开之前的seajs，requirejs，并且哒哒哒了一堆，然后又莫名失落，估计好多人都早已废弃这些东西，开启了各自mvvm实践之路。哈哈，总是这么多愁善感。
-                    </p>
-                </div>
-                <div class="article_tag">
-                    <span>javascript</span>
-                    <i>2017-03-27</i>
-                </div>
-            </a>
+           
         </div>
         <aside class="user_list">
             {%if userInfo._id%}
