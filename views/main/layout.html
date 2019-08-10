@@ -53,11 +53,11 @@
             <p><span class="colDark">{{userInfo.username}}</span></p>
             {% if userInfo.isAdmin %}
             <p><span class="colDanger">你好，欢迎光临我的管理员！</span></p>
-            <a href="/admin">进入管理界面</a>
+            <a href="/admin" style="font-size: 22px;text-decoration: underline">进入管理界面</a>
             {% else %}
-            <p><span class="colDanger">你好，欢迎光临我的博客！</span></p>
+            <p><span class="colDanger" >你好，欢迎光临我的博客！</span></p>
             {%endif%}
-            <p><span class="colDark"><button id="logout">退出</button></span></p>
+            <p><span class="colDark"><button id="logout" >退出</button></span></p>
         </div>
         {% else %}
         <div class="rightBox" id="loginBox" style="display: none">
@@ -85,7 +85,11 @@
                 <span class="discuss_title">友情链接</span>
             </div>
             <div class="link_item">
-                <a href="http:www.zhihu.com" style="text-decoration: underline">知乎</a>
+                <a href="https://www.baidu.com/" style="text-decoration: underline">百度</a>
+                <a href="https://juejin.im/" style="text-decoration: underline">掘金</a>
+                <a href="https://www.cnblogs.com/TomXu/archive/2011/12/15/2288411.html" style="text-decoration: underline">汤姆大叔</a>
+                <a href="https://nodejs.org/en/" style="text-decoration: underline">node.js</a>
+                <a href="https://www.iconfont.cn/" style="text-decoration: underline">阿里巴巴矢量图标库</a>
             </div>
         </div>
        

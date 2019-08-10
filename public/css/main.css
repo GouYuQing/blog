@@ -45,6 +45,7 @@ header .center .head_nav a{
   margin-left: 600px;
 }
 .center .mainLeft .listBox {
+    position: relative;
     width: 600px;
     height: 240px;
     box-shadow: 0px 0px 20px red inset;
@@ -98,12 +99,15 @@ header .center .head_nav a{
 .center .bottom  .clear li strong{
 margin-left: 200px;
 }
-.user_list .rightBox{
+.user_list{
     position: relative;
+    margin-left: 800px;
+}
+.user_list .rightBox{
     float: right;
     width: 400px;
     height: 280px;
-    margin-top:-700px;
+    margin-top:-350px;
     margin-right: 100px;
  border-radius: 20px;
  font-family: STLiti;
@@ -112,6 +116,7 @@ margin-left: 200px;
  background-color: aqua;
  height: 50px;
  border-radius: 10px;
+    font-family: STZhongsong;
  font-family: STLiti;
 
 }
@@ -128,11 +133,24 @@ width: 400px;
  font-size: 20px;
  text-align: center;
 }
-.user_list .rightBox div .colDark{
-font-size: 24px;
+.user_list .rightBox .colWarning{
+    color: black;
+    font-size: 24px;
 line-height: 45px;
 font-family: STLiti;
 
+}
+.user_list .rightBox div .colDark{
+font-size: 20px;
+line-height: 30px;
+font-family: STLiti;
+
+}
+.user_list .rightBox #logout{
+    font-size: 22px;
+    font-family:  STLiti;
+    color: black;
+    margin-top: 15px;
 }
 .user_list .rightBox div button{
     font-size: 22px;
@@ -149,13 +167,19 @@ aside .friendly_link{
     border: 1px solid brown;
     position: relative;
     float: right;
-    margin-top:-300px;
+    margin-top:-100px;
     margin-right: 100px;
  border-radius: 20px;
  
 
 }
-aside .friendly_link a,span{
+aside .friendly_link span{
     font-family: STLiti;
-    font-size: 25px
+    font-size: 25px;
+}
+aside .friendly_link .link_item a{
+    font-family: STLiti;
+    font-size: 20px;
+    margin-left: 30px;
+    color: brown;
 }
