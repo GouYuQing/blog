@@ -16,17 +16,17 @@
                 <div class="bottom">
                     <ul class="clear">
                         {% if page<=1 %}
-                        <li class="previous"><a href="javascript:;">没有上一页了</a></li>
+                        <li ><a href="javascript:;" class="previous">没有上一页了</a></li>
                         {% else %}
-                        <a href="/?category={{category}}&page={{page-1}}">上一页</a>
+                        <a href="/?category={{category}}&page={{page-1}}" class="previous">上一页</a>
                         {% endif %}
                         <li>
                             <strong>{{page}}/{{pages}}</strong>
                         </li>
                         {% if page>=pages %}
-                        <li class="next"><a href="javascript:;">没有下一页了</a></li>
+                        <li ><a href="javascript:;" class="next">没有下一页了</a></li>
                         {% else %}
-                        <a href="/?category={{category}}&page={{page+1}}">下一页</a>
+                        <a href="/?category={{category}}&page={{page+1}}" class="next">下一页</a>
                         {% endif %}
                     </ul>
                 </div>

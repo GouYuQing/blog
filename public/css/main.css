@@ -6,7 +6,7 @@
     color: white;
 }
 body{
-    background-color: black;
+    /* background-color: MistyRose; */
 }
 header{
     width: 100%;
@@ -31,11 +31,18 @@ header .center .head_nav a{
     height: 60px;
     text-align: center;
     color: white;
+    font-family: FZShuTi;
+    font-size: 25px;
 }
-.banner img{
+.banner .a{
     width: 100%;
-	height: 400px;
+	/* height: 650px; */
 	margin: 0 atuo;
+}
+.banner .b{
+  position: absolute;
+  margin-top: -600px;
+  margin-left: 600px;
 }
 .center .mainLeft .listBox {
     width: 600px;
@@ -44,21 +51,111 @@ header .center .head_nav a{
     margin-left: 150px;
     margin-top: 50px;
     background-color: white;
+    border-radius: 40px;
 }
 .center .mainLeft .listBox h1{
-    font-family: '楷体';
-    font-size: 50px;
+    font-family:STXingkai;
+    font-size: 40px;
     color: black;
+    margin: 20px;
 }
 .center .mainLeft .listBox p,span{
     color: black;
-    font-family: '楷体';
+    font-family: STZhongsong;
     font-size: 20px;
+    margin: 20px;
+
 }
 .center .mainLeft  .listBox .function a{
     color: brown;
-    font-family: '楷体';
+    font-family: STLiti;
     font-size: 26px;
     margin: 20px;
     text-decoration: underline;
+}
+.center .bottom  .clear {
+    width: 600px;
+    height: 80px;
+    border: 3px  #cccccc solid;
+    margin-left: 150px;
+    margin-top: 50px;
+    border-radius: 15px;
+    font-family: STZhongsong;
+
+}
+.center .bottom  .clear .previous{
+    float: left;
+    margin-top: -10px;
+}
+.center .bottom .clear li,a,strong{
+    color: black;
+    margin-top: 30px;
+}
+.center .bottom  .clear .next{
+    float: right;
+    margin-top: -20px;
+}
+.center .bottom  .clear li strong{
+margin-left: 200px;
+}
+.user_list .rightBox{
+    position: relative;
+    float: right;
+    width: 400px;
+    height: 280px;
+    margin-top:-700px;
+    margin-right: 100px;
+ border-radius: 20px;
+ font-family: STLiti;
+}
+.user_list .rightBox .title {
+ background-color: aqua;
+ height: 50px;
+ border-radius: 10px;
+ font-family: STLiti;
+
+}
+.user_list .rightBox .title span{
+    font-size: 35px;
+    font-family: STLiti;
+}
+.user_list .rightBox .textRight{
+background-color: aqua;
+width: 400px;
+ height: 50px;
+ border-radius: 10px;
+ color: black;
+ font-size: 20px;
+ text-align: center;
+}
+.user_list .rightBox div .colDark{
+font-size: 24px;
+line-height: 45px;
+font-family: STLiti;
+
+}
+.user_list .rightBox div button{
+    font-size: 22px;
+color: black;
+font-family: STLiti;
+}
+.user_list .rightBox input{
+ color: black;
+}
+aside .friendly_link{
+    color: black;
+    width: 400px;
+    height: 100px;
+    border: 1px solid brown;
+    position: relative;
+    float: right;
+    margin-top:-300px;
+    margin-right: 100px;
+ border-radius: 20px;
+ 
+
+}
+aside .friendly_link a,span{
+    font-family: STLiti;
+    font-size: 25px
 }
