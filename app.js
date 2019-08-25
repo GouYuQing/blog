@@ -23,7 +23,7 @@ swig.setDefaults({cache:false})
 app.use(bodyParser.urlencoded({extended:true}))
 app.use(function(req,res,next){
     req.cookies = new Cookies(req,res);
-    console.log(req.cookies.get('userInfo'));
+    // console.log(req.cookies.get('userInfo'));
 
 
     //解析登录用户的cookies信息
@@ -61,7 +61,7 @@ mongoose.connect('mongodb://localhost:27017/blog',{ useNewUrlParser: true },func
         console.log('数据库连接失败')
     }else{
         console.log('数据库连接成功');
-        app.listen(3001,function(){
+        app.listen(3002,function(){
             console.log('running')
         });
     }
