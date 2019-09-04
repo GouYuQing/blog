@@ -24,8 +24,6 @@ app.use(bodyParser.urlencoded({extended:true}))
 app.use(function(req,res,next){
     req.cookies = new Cookies(req,res);
     // console.log(req.cookies.get('userInfo'));
-
-
     //解析登录用户的cookies信息
     req.userInfo={};
     if(req.cookies.get('userInfo')){
@@ -44,7 +42,6 @@ app.use(function(req,res,next){
         }catch(e){
             next();
         }
-        // return req.userInfo;
 
     }else{
         next();

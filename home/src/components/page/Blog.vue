@@ -26,7 +26,7 @@
                         评论：<span class="colInfo">10</span>
                     </p>
                    <p>hello{{describe}}</p>
-                    <div class="function"><router-link :to="{name:'View'}">阅读全文</router-link></div>
+                    <div class="function"><router-link :to="{name:'Views',params:{all:content}}">阅读全文</router-link></div>
    </div>
 <nav aria-label="bottom">
     <ul class="pager">
@@ -35,7 +35,6 @@
         <li class="next"><a href="#" @click="go">下一页 <span aria-hidden="true">&rarr;</span></a></li>
     </ul>
 </nav>
-<router-view></router-view>
   </div>
 </template>
 
@@ -45,6 +44,7 @@ export default {
   name: 'Blog',
   data () {
     return {
+      article: [],
       title:'',
       category:'',
       username:'',
@@ -52,7 +52,8 @@ export default {
       count:'',
       describe:'',
       page:'',
-      views:''
+      views:'',
+      content:''
     }
   },
   methods:{
@@ -66,14 +67,15 @@ export default {
   created:function(){
     axios.get('http://127.0.0.1:3002/adminV/getContent')
     .then(response=>{
-      console.log('1');
       console.log(response.data);
       console.log(response.data.length);
+      this.article = response.data;
       this.addTime = response.data[0].addTime;
       this.describe = response.data[0].discription;
       this.views = response.data[0].views;
       this.title = response.data[0].title;
       this.category = response.data[0].category.name;
+      this.content = response.data[0].content;
     })
     .catch(error=>{
       alert('网络错误，访问的网页丢失了')

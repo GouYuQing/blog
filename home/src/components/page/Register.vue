@@ -11,7 +11,7 @@
                 <ul class="breadcrumb">
                   <li><i class="icon iconfont icon-shouye"></i></li>
                     <li><i class="fa fa-fw fa-home"></i> <a href="#">Home</a></li>
-                    <li>Register</li>
+                    <li><a href="http://127.0.0.1:3002/" target="_blank">Background management</a></li>
                 </ul>
             </div>
         </div>
@@ -86,7 +86,7 @@ $(function () {
         //通过ajax提交请求
         $.ajax({
             type: 'post',
-            url: 'http://127.0.0.1:3002/api/user/register',
+            url: 'http://127.0.0.1:3002/apiV/getUser/register',
             data: {
                 username: $registerBox.find('[name="username"]').val(),
                 password: $registerBox.find('[name="password"]').val(),
@@ -109,7 +109,7 @@ $(function () {
         $loginBox.find('button').on('click', function () {
             $.ajax({
                 type: 'post',
-                url: 'http://127.0.0.1:3002/api/user/login',
+                url: 'http://127.0.0.1:3002/apiV/getUser/login',
                 data: {
                     username: $loginBox.find('[name="username"]').val(),
                     password: $loginBox.find('[name="password"]').val()
@@ -126,7 +126,6 @@ $(function () {
                         $userInfo.show();
                     }, 1000);
                     }
-                    // return this.data;
                 }
             })
         })
@@ -135,7 +134,7 @@ $(function () {
             // console.log('logout');
             $.ajax({
             // type: 'post',
-                url: 'http://127.0.0.1:3002/api/user/logout',
+                url: 'http://127.0.0.1:3002/apiV/getUser/logout',
                 // datatType: 'json',
                 success: function (result) {
                     if (!result.code) {

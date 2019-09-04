@@ -5,7 +5,7 @@ import About from '@/components/page/About'
 import Article from '@/components/page/Article'
 import Blog from '@/components/page/Blog'
 import Register from '@/components/page/Register'
-import View from '@/components/page/View'
+import Views from '@/components/page/Views'
 Vue.use(Router)
 
 export default new Router({
@@ -32,9 +32,9 @@ export default new Router({
       name:'Register',
       component:Register
     },{
-      path:'view',
-      name:'View',
-      component:View
+      path:'/views',
+      name:'Views',
+      component:Views
     }
    
   ]

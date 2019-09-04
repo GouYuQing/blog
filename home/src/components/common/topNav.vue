@@ -3,7 +3,7 @@
     <img src="./logo.jpg" alt />
     <router-link to="/register" id="top">
       <i class="icon iconfont icon-demo-"></i>
-      Sign In
+      Back
     </router-link>
     <router-link to="/about" id="top">
       <i class="icon iconfont icon-guanyuwomen"></i>

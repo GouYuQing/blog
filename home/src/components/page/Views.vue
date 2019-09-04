@@ -11,21 +11,23 @@
                 <ul class="breadcrumb">
                   <li><i class="icon iconfont icon-shouye"></i></li>
                     <li><i class="fa fa-fw fa-home"></i> <a href="#">Home</a></li>
-                    <li>Blog/View</li>
+                    <li>Blog/Views</li>
                 </ul>
             </div>
         </div>
     </div>
     </div>
-    <p>{{msg}}</p>
+    <div>
+        <p>{{$route.params.all}}</p>
+    </div>
 </div>
 </template>
 <script>
 export default {
-  name: 'View',
+  name: 'Views',
   data () {
     return {
-        msg:'hello views'
+      
     }
   }
 }
