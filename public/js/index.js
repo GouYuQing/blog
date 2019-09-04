@@ -24,7 +24,6 @@ $(function () {
                 username: $registerBox.find('[name="username"]').val(),
                 password: $registerBox.find('[name="password"]').val(),
                 repassword: $registerBox.find('[name="repassword"]').val(),
-
             },
             datatType: 'json',
             success: function (result) {
@@ -59,7 +58,7 @@ $(function () {
         })
         //点击退出
         $userInfo.find('button').on('click', function () {
-            console.log('logout');
+            // console.log('logout');
             $.ajax({
             // type: 'post',
                 url: '/api/user/logout',
@@ -69,6 +68,8 @@ $(function () {
                         //重载页面
                         window.location.reload();
                     }
+                // return result;
+
                 }
             })
         })

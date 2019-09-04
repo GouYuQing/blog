@@ -13,32 +13,26 @@ var Content = require('../models/Content');
 // })
 /*后台管理 */
 router.get('/', function (req, res, next) {
-    res.render('admin/index', {
-        userInfo: req.userInfo
-    })
-    return req.query;
+    // res.render('admin/index', {
+    //     userInfo: req.userInfo
+    // })
+    return req.userInfo;
 })
 /*用户管理 */
 router.get('/user', function (req, res) {
-    /*限制获取的数据条数，展示的用户个数limit（number）
-    skip(2):忽略前两条数据
-    每页显示两条 1-2 忽略0
-    3-4 忽略2
-    */
+    /*限制获取的数据条数，展示的用户个数limit（number）*/
     /*为了实现用户列表的展示，需要从数据库中读取所有的用户列表信息 */
     var page = Number(req.query.page || 1);
     var limit = 3;
     var pages = 0;
     /**读取数据库中的总数据 */
     User.count().then(function (count) {
-        // console.log(count);
         /*计算总页数 */
         pages = Math.ceil(count / limit);
         /**取值范围不能大于pages，不能小于1 */
         page = Math.min(page, pages);
         page = Math.max(page, 1);
         var skip = (page - 1) * limit;
-
         User.find().limit(limit).skip(skip).then(function (users) {
             res.render('admin/user_index', {
                 userInfo: req.userInfo,
@@ -53,7 +47,7 @@ router.get('/user', function (req, res) {
 
 })
 /*分类管理 */
-router.get('/category',function(req,res){
+router.get('/getCategory',function(req,res){
     var page = Number(req.query.page || 1);
     var limit = 3;
     var pages = 0;
@@ -71,14 +65,17 @@ router.get('/category',function(req,res){
 降序：-1
 */
     Category.find().sort({_id:-1}).limit(limit).skip(skip).then(function (categories) {
-            res.render('admin/category_index', {
-                userInfo: req.userInfo,
-                categories: categories,
-                page: page,
-                count:count,
-                limit:limit,
-                pages:pages
-            })
+            // res.render('admin/category_index', {
+            //     userInfo: req.userInfo,
+            //     categories: categories,
+            //     page: page,
+            //     count:count,
+            //     limit:limit,
+            //     pages:pages
+            // })
+            res.send(categories);
+        }).catch(error=>{
+            console.log('获取分类失败！')
         })
     })
 })
@@ -208,13 +205,12 @@ router.get('/category/delete',function(req,res){
     })
 })
 /*内容首页*/
-router.get('/content',function(req,res){
+router.get('/getContent',function(req,res){
     var page = Number(req.query.page || 1);
     var limit = 3;
     var pages = 0;
     /**读取数据库中的总数据 */
     Content.count().then(function (count) {
-        // console.log(count);
         /*计算总页数 */
         pages = Math.ceil(count / limit);
         /**取值范围不能大于pages，不能小于1 */
@@ -223,14 +219,17 @@ router.get('/content',function(req,res){
         var skip = (page - 1) * limit;
         //populate('category')引用的内容，在index页面里面就可以直接使用
     Content.find().sort({_id:-1}).limit(limit).skip(skip).populate(['category','user']).sort({addTime:-1}).then(function (contents) {
-            res.render('admin/content_index', {
-                userInfo: req.userInfo,
-                contents: contents,
-                page: page,
-                count:count,
-                limit:limit,
-                pages:pages
-            })
+            // res.render('admin/content_index', {
+            //     userInfo: req.userInfo,
+            //     contents: contents,
+            //     page: page,
+            //     count:count,
+            //     limit:limit,
+            //     pages:pages
+            // })
+            res.send(contents);
+        }).catch(error=>{
+            console.log('返回内容失败！');
         })
     })
 })

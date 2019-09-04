@@ -34,7 +34,6 @@ export default {
 }
 .main{
   width: 100%;
-  background-color: aqua;
 }
 .fade-enter{
   opacity: 0;

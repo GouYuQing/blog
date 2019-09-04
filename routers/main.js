@@ -41,8 +41,6 @@ router.get('/',function(req,res,next){
         // console.log(data);
         res.render('main/index',data);
     })
-   
-
 });
 router.get('/view',function(req,res){
     var contentId = req.query.contentid||'';
@@ -54,6 +52,7 @@ router.get('/view',function(req,res){
         content.views++;
         content.save();
         res.render('main/view',data)
+        // return data;
     })
 })
 module.exports = router;
