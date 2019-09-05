@@ -7,6 +7,8 @@
 #### 开始
 ***
 ##### 首页html
+![Image text](https://raw.githubusercontent.com/GouYuQing/blog/master/images/1.png)
+***
 ##### 登录和注册功能
 *使用cookies保存用户登录状态,退出的时候cookies状态为null，退出到注册页面了*
 ###### *退出失败了，暂时没有找到原因，只能手动退出*
